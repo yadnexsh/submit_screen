@@ -1,6 +1,6 @@
 # ============================================================================
 # submit_screen.src
-# Core package for the Dynamic Dailies Burn-in Generator
+# Core package for the Dynamic Dailies Slate Generator
 # ============================================================================
 
 __version__ = "1.0.0"

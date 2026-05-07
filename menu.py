@@ -1,5 +1,5 @@
 # ============================================================================
-# Dynamic Dailies Burn-in Generator
+# Dynamic Dailies Slate Generator
 # menu.py — Entry point that starts everything
 #
 # Executed by Nuke after init.py (GUI mode only). Registers the toolbar
@@ -23,6 +23,6 @@ try:
         icon="Write.png"
     )
     
-    nuke.tprint(">>> Loaded Dailies Burn-in Generator UI")
+    nuke.tprint(">>> Loaded Dailies Slate Generator UI")
 except ImportError as e:
-    nuke.tprint("Failed to load Dailies Burn-in Generator UI: {}".format(e))
+    nuke.tprint("Failed to load Dailies Slate Generator UI: {}".format(e))

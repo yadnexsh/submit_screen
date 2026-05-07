@@ -1,5 +1,5 @@
 # ============================================================================
-# Dynamic Dailies Burn-in Generator
+# Dynamic Dailies Slate Generator
 # init.py — Nuke startup initialization
 #
 # This file is executed by Nuke on startup. It registers the plugin paths
@@ -17,4 +17,4 @@ nuke.pluginAddPath(os.path.join(_plugin_root, "src"))
 nuke.pluginAddPath(os.path.join(_plugin_root, "src", "media"))
 nuke.pluginAddPath(os.path.join(_plugin_root, "src", "fonts"))
 
-nuke.tprint(">>> Registered Dailies Burn-in Generator paths")
+nuke.tprint(">>> Registered Dailies Slate Generator paths")

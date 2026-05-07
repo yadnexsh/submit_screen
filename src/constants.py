@@ -1,5 +1,5 @@
 # ============================================================================
-# constants.py — Centralised configuration for the Dailies Burn-in Generator
+# constants.py — Centralised configuration for the Dailies Slate Generator
 # ============================================================================
 
 import os

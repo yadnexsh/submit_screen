@@ -57,7 +57,7 @@ def _create_text_node(name, message, font_size, font_family, font_style, color, 
 
 def build_slate(data, dept, notes):
     """
-    Constructs the dailies burn-in architecture within a single Nuke Group node.
+    Constructs the dailies slate architecture within a single Nuke Group node.
     
     This function programmatically builds a resolution-independent node graph containing:
     1. A background canvas (Reformatted to 3840x2160 logic).
@@ -94,15 +94,15 @@ def build_slate(data, dept, notes):
     tab_knob = nuke.Tab_Knob("dailies_tab", "Submit Info")
     group.addKnob(tab_knob)
     
-    # Populate the tab with all the fetched details
-    group.addKnob(nuke.String_Knob("artist", "Artist", data.get("artist", "")))
-    group.addKnob(nuke.String_Knob("shot", "Shot", data.get("shot", "")))
-    group.addKnob(nuke.String_Knob("version", "Version", data.get("version", "")))
-    group.addKnob(nuke.String_Knob("frames", "Frame Range", f"{first_frame} - {last_frame}"))
-    group.addKnob(nuke.String_Knob("fps", "FPS", str(data.get("fps", 24.0))))
-    group.addKnob(nuke.String_Knob("date", "Date", data.get("date", "")))
-    group.addKnob(nuke.String_Knob("dept", "Dept", dept))
-    group.addKnob(nuke.Multiline_Eval_String_Knob("notes", "Notes", notes))
+    # Populate the tab with all the fetched details as read-only labels
+    group.addKnob(nuke.Text_Knob("artist", "Artist", data.get("artist", "")))
+    group.addKnob(nuke.Text_Knob("shot", "Shot", data.get("shot", "")))
+    group.addKnob(nuke.Text_Knob("version", "Version", data.get("version", "")))
+    group.addKnob(nuke.Text_Knob("frames", "Frame Range", f"{first_frame} - {last_frame}"))
+    group.addKnob(nuke.Text_Knob("fps", "FPS", str(data.get("fps", 24.0))))
+    group.addKnob(nuke.Text_Knob("date", "Date", data.get("date", "")))
+    group.addKnob(nuke.Text_Knob("dept", "Dept", dept))
+    group.addKnob(nuke.Text_Knob("notes", "Notes", notes))
 
     # 4. Build internals inside the Group
     group.begin()

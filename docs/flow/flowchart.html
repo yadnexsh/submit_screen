@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Dailies Slate Generator - Logic Flow</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#ffffff', primaryTextColor: '#333333', primaryBorderColor: '#000000', lineColor: '#000000', secondaryColor: '#e0e0e0', tertiaryColor: '#f4f4f4' } });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 40px;
+        }
+        .header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .mermaid {
+            background-color: white;
+            padding: 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Code Logic Flowchart</h2>
+        <p>Right-click the diagram and select "Save Image As..." to export.</p>
+    </div>
+    <div class="mermaid">
+        graph TD
+            Start(["Start Nuke"]) --> Init["Execute init.py & menu.py"]
+            Init --> Trigger{"Hotkey Ctrl+Shift+B?"}
+            Trigger -- No --> Wait["Wait in background"]
+            Wait --> Trigger
+            Trigger -- Yes --> UI["Launch PySide UI Panel"]
+            
+            UI --> Extract["Initialize data_extractor.py"]
+            Extract --> FetchOS["Fetch OS Username via getpass"]
+            FetchOS --> ParseScript["Parse .nk file path for Shot/Version"]
+            ParseScript --> QueryRoot["Query Nuke Root for FPS & Frame Range"]
+            
+            QueryRoot --> UIRefresh["Populate UI 'Auto-Detected' Labels"]
+            
+            UIRefresh --> UserInput{"User clicks 'Generate Slate'?"}
+            UserInput -- No --> UserInput
+            UserInput -- Yes --> NodeBuilder["Execute node_builder.py"]
+            
+            NodeBuilder --> GroupNode["Create Group Node (submit_to_dailies)"]
+            GroupNode --> AddKnobs["Add read-only 'Submit Info' Knobs"]
+            AddKnobs --> Background["Load Background.png"]
+            Background --> CanvasReformat["Reformat Canvas to 3840x2160 (4K)"]
+            
+            CanvasReformat --> TextStack["Generate Text Nodes (Absolute 4K Coords)"]
+            TextStack --> SwitchNode["Add Switch Node"]
+            SwitchNode --> SwitchLogic{"Current frame < (first_frame + 5)?"}
+            
+            SwitchLogic -- Yes --> ShowSlate["Output Slate (Input 0)"]
+            SwitchLogic -- No --> ShowPlate["Output Clean Plate (Input 1)"]
+            
+            ShowSlate --> FinalFormat["Final Reformat (to match root.format)"]
+            ShowPlate --> FinalFormat
+            
+            FinalFormat --> Connect["Auto-connect to selected DAG Node"]
+            Connect --> End(["Process Complete"])
+    </div>
+</body>
+</html>

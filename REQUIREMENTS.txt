@@ -1,5 +1,5 @@
 # ============================================================================
-# Dynamic Dailies Burn-in Generator Dependencies
+# Dynamic Dailies Slate Generator Dependencies
 # ============================================================================
 # Note: All required dependencies are natively bundled with Foundry Nuke 13+.
 # This file is provided for environment documentation and standalone UI testing.

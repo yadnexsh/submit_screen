@@ -1,0 +1,69 @@
+================================================================================
+               DYNAMIC DAILIES SLATE GENERATOR - CODE FLOW
+================================================================================
+
+ [NUKE BOOT] 
+      |
+      +---> init.py  (Registers /fonts and /media paths to Nuke)
+      |
+      +---> menu.py  (Registers 'Ctrl+Shift+B' hotkey & Toolbar menu)
+
+================================================================================
+                                     |
+                          [USER TRIGGERS HOTKEY]
+                                     |
+================================================================================
+
+ [UI LAYER] 
+ ui_panel.py  ------> Checks QApplication safely so Nuke doesn't crash
+      |               Spawns Floating Widget (PySide2/PySide6)
+      |
+      +----------------------------+
+                                   v
+                        [DATA EXTRACTION LAYER]
+                        data_extractor.py
+                           |
+                           +-- getpass.getuser()  --> [Artist Name]
+                           +-- nuke.root().name() --> [Shot, Version, Proj]
+                           +-- nuke.root()        --> [FPS, Frame Range]
+                                   |
+      +----------------------------+
+      |
+      v
+ [UI UPDATES] 
+ ui_panel.py  ------> Populates static 'Auto-Detected' UI Labels
+                      Waits for User to select 'Dept' and type 'Notes'
+                      User clicks [Generate Slate]
+                                     |
+================================================================================
+                                     |
+                         [NODE GENERATION LAYER]
+                         node_builder.py
+                                     |
+ [1] Creates Group Node ('submit_to_dailies')
+     +-- Sets Tile Color to Green
+     +-- Bakes metadata into read-only 'Submit Info' Knobs
+                                     |
+ [2] Enters Group Context
+     +-- Read Node loads 'Background.png' (1920x1080)
+     +-- Reformat forces canvas to 3840x2160 (4K)
+                                     |
+ [3] Builds Text Stack
+     +-- Places Text2 Nodes on absolute 4K coordinates
+     +-- Uses registered 'Helvetica' font
+                                     |
+ [4] Switch Logic
+     +-- Slate    (Input 0)
+     +-- Sequence (Input 1)
+     +-- expr: frame < (first_frame + 5) ? 0 : 1
+                                     |
+ [5] Format Safety
+     +-- Single default Reformat node forces output 
+         to strictly match the script's root format.
+                                     |
+================================================================================
+                                     |
+                             [DAG INTEGRATION]
+             Group node auto-connects to selected Merge Node!
+                                     |
+                                   [DONE]
