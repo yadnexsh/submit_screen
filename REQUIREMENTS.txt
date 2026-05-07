@@ -1,0 +1,8 @@
+# ============================================================================
+# Dynamic Dailies Burn-in Generator Dependencies
+# ============================================================================
+# Note: All required dependencies are natively bundled with Foundry Nuke 13+.
+# This file is provided for environment documentation and standalone UI testing.
+
+PySide2>=5.15.0; python_version < '3.9'
+PySide6>=6.2.0; python_version >= '3.9'
