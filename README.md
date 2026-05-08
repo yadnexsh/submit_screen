@@ -1,4 +1,4 @@
-# Dynamic Dailies Slate Generator
+# Submit Slate Generator
 
 A professional, resolution-independent Nuke tool that automates the generation of standardized slate cards for production review. It eliminates manual typographic setup by automatically extracting required data.
 
