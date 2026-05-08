@@ -1,21 +1,6 @@
-# Dynamic Dailies Slate Generator
+# Submit Slate Generator
 
-A professional, resolution-independent Nuke tool that automates the generation of standardized slate cards for production review. It eliminates manual typographic setup by automatically extracting sequence metadata, building a perfectly aligned text graph natively on a 3840x2160 canvas, and seamlessly splicing it with the clean plate.
-
----
-
-## Architecture & Logic Flow
-
-![Code Logic Flow](docs/code_logic_flow.png)
-
----
-
-## Tech Stack
-
-* Python 3
-* Foundry Nuke API (`nuke` module)
-* PySide2 / PySide6 (Qt UI Framework)
-* Nuke TCL Expressions
+A professional, resolution-independent Nuke tool that automates the generation of standardized slate cards for production review. It eliminates manual typographic setup by automatically extracting required data.
 
 ---
 
@@ -69,6 +54,21 @@ This tool is designed to work out-of-the-box with standard VFX pipeline director
 3. Select your **Dept** (Comp, Roto, Prep, etc.) and add any **Submission Notes**.
 4. Click **Generate Slate**.
 5. A `submit_to_dailies` Group node will be injected into your node graph. Connect this beneath your final Merge node before rendering.
+
+---
+
+## Architecture & Logic Flow
+
+![Code Logic Flow](docs/code_logic_flow.png)
+
+---
+
+## Tech Stack
+
+* Python 3
+* Foundry Nuke API (`nuke` module)
+* PySide2 / PySide6 (Qt UI Framework)
+* Nuke TCL Expressions
 
 ---
 
