@@ -35,6 +35,14 @@ A professional, resolution-independent Nuke tool that automates the generation o
 
 * **Data Persistence**
   The generated `submit_to_dailies` Group node automatically populates a custom "Submit Info" tab with all harvested metadata, ensuring properties persist reliably within the Nuke script.
+---
+
+## Pipeline Assumptions
+
+This tool is designed to work out-of-the-box with standard VFX pipeline directory structures and naming conventions:
+* **Directory Structure**: Scripts should be stored in a `SHOW/SHOT/TaskFolder` format. The tool can gracefully fallback to extracting shot names from the parent directory if the filename fails.
+* **Naming Convention**: `[SHOT]_[DEPT]_[LABEL]_[VERSION].nk` (e.g. `054_acm_comp_myTest_v01.nk`).
+* **Auto-Detection**: The tool actively parses the filename to find matching departments (`comp`, `roto`, `fx`, etc.) and automatically selects the correct dropdown option in the UI when launched.
 
 ---
 

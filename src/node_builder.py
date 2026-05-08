@@ -170,7 +170,7 @@ def build_slate(data, dept, notes):
                 font_family=constants.FONT_FAMILY,
                 font_style=constants.FONT_STYLE_REGULAR,
                 color=constants.SLATE_TEXT_COLOR,
-                box=[85, current_y - 120, 1200, current_y],
+                box=[85, current_y - 120, 1800, current_y],
                 yjustify="top"
             )
             txt_node.setInput(0, last_node)

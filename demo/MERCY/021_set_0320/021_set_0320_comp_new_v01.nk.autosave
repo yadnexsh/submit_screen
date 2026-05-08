@@ -1,0 +1,94 @@
+#! D:/nuke15/nuke-15.0.4.dll -nx
+version 15.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1917" h="1138" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="971" stretch="1"/>
+            <splitter orientation="2">
+                <split size="643"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="453"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="898"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="Scenegraph.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name H:/Gamut/Projects/AntiGravity/submit_screen/demo/MERCY/021_set_0320/021_set_0320_comp_new_v01.nk
+ frame 100
+ first_frame 100
+ last_frame 200
+ fps 35
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ monitorOutLUT rec709
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ label "File name :\n021_set_0320_comp_new_v01.nk"
+ note_font "Verdana Bold"
+ note_font_size 31
+ note_font_color 0xffffffff
+ selected true
+ xpos -218
+ ypos -149
+ bdwidth 40
+ bdheight 20
+}
+ColorWheel {
+ inputs 0
+ gamma 0.45
+ name ColorWheel1
+ xpos 260
+ ypos -5
+}
+ColorBars {
+ inputs 0
+ name ColorBars1
+ xpos -5
+ ypos -5
+}
+Merge2 {
+ inputs 2
+ name Merge1
+ xpos 131
+ ypos 19
+}
+Viewer {
+ frame 100
+ frame_range 100-200
+ fps 35
+ monitorOutNDISenderName "NukeX - 021_set_0320_comp_new_v01 - Viewer1"
+ monitorOutOutputTransform rec709
+ name Viewer1
+ xpos 503
+ ypos 12
+}

@@ -63,61 +63,106 @@ def get_shot_name():
     Parses the Nuke script's filepath to extract the shot name.
     
     Uses standard string splitting rules designed for the internal pipeline naming
-    convention (e.g., 'ProjectName_Shot123_v001_comp.nk'). Avoids complex regex 
-    for better maintainability by artists.
+    convention. Avoids complex regex for better maintainability by artists.
     
     Returns:
         str: The extracted shot name. Defaults to "UNKNOWN" if parsing fails.
     """
-    script_path = get_script_path()
-    if not script_path:
-        return "UNKNOWN"
-        
-    # Get just the filename (e.g., 'SH010_comp_v01.nk')
-    filename = os.path.basename(script_path)
-    
-    # Remove the .nk extension
-    name_without_ext = filename.split('.nk')[0]
-    
-    # Split by underscores. We assume the first part is the shot name.
-    # E.g. 'SH010_comp_v01' -> ['SH010', 'comp', 'v01'] -> 'SH010'
-    parts = name_without_ext.split('_')
-    
-    clean_parts = []
-    for part in parts:
-        part_lower = part.lower()
-        # Stop collecting parts if we hit a version string (e.g., 'v01')
-        if part_lower.startswith('v') and part_lower[1:].isdigit():
-            break
-        # Stop if we hit common department names
-        if part_lower in ['comp', 'roto', 'prep', 'paint', 'matchmove']:
-            break
+    try:
+        script_path = get_script_path()
+        if not script_path:
+            return "UNKNOWN"
             
-        clean_parts.append(part)
+        filename = os.path.basename(script_path)
+        name_without_ext = os.path.splitext(filename)[0]
         
-    if clean_parts:
-        return "_".join(clean_parts)
+        # Normalize delimiters to underscores without using regex
+        normalized_name = name_without_ext.replace('-', '_').replace('.', '_')
+        parts = normalized_name.split('_')
         
-    return name_without_ext
+        clean_parts = []
+        for part in parts:
+            if not part:
+                continue
+                
+            part_lower = part.lower()
+            
+            # Stop if we hit a version string (e.g., 'v01')
+            if part_lower.startswith('v') and part_lower[1:].isdigit():
+                break
+                
+            # Stop if we hit common department names
+            if part_lower in ['comp', 'roto', 'prep', 'paint', 'matchmove', 'fx', 'light']:
+                break
+                
+            clean_parts.append(part)
+            
+        if clean_parts and len(clean_parts) < len(parts):
+            return "_".join(clean_parts)
+            
+        # Fallback to folder structure if filename lacks standard delimiters
+        parent_dir = os.path.basename(os.path.dirname(script_path))
+        grandparent_dir = os.path.basename(os.path.dirname(os.path.dirname(script_path)))
+        
+        # If the parent folder is a task/dept folder (e.g. 'comp'), the grandparent is the shot
+        if parent_dir.lower() in ['comp', 'roto', 'prep', 'paint', 'matchmove', 'fx', 'light']:
+            if grandparent_dir:
+                return grandparent_dir
+        elif parent_dir:
+            return parent_dir
+            
+        return name_without_ext
+    except Exception:
+        return "UNKNOWN"
+
+def get_department():
+    """Extracts department from filename for auto-selection."""
+    try:
+        script_path = get_script_path()
+        if not script_path:
+            return ""
+            
+        filename = os.path.basename(script_path)
+        name_without_ext = os.path.splitext(filename)[0].lower()
+        
+        normalized_name = name_without_ext.replace('-', '_').replace('.', '_')
+        parts = normalized_name.split('_')
+        
+        valid_depts = ['comp', 'roto', 'prep', 'paint', 'matchmove', 'fx', 'light']
+        for part in parts:
+            if part in valid_depts:
+                return part.capitalize()
+    except Exception:
+        pass
+    return ""
 
 def get_version():
     """Extract version number (e.g. v01) from script path using simple string matching."""
-    script_path = get_script_path()
-    if not script_path:
-        return "v00"
-        
-    filename = os.path.basename(script_path)
-    
-    # Split by underscores to find a part that looks like a version
-    parts = filename.split('_')
-    for part in parts:
-        # Remove the .nk extension if it's on this part
-        clean_part = part.split('.nk')[0]
-        
-        # Check if it starts with 'v' and the rest is a number
-        if clean_part.lower().startswith('v') and clean_part[1:].isdigit():
-            return clean_part.lower()
+    try:
+        script_path = get_script_path()
+        if not script_path:
+            return "v00"
             
+        filename = os.path.basename(script_path)
+        name_without_ext = os.path.splitext(filename)[0]
+        
+        # Normalize delimiters to underscores without using regex
+        normalized_name = name_without_ext.replace('-', '_').replace('.', '_')
+        parts = normalized_name.split('_')
+        
+        # Search backwards, ignoring the very first part (which is usually the shot name)
+        for i in range(len(parts)-1, 0, -1):
+            part = parts[i]
+            if not part:
+                continue
+                
+            # Check if it starts with 'v' and the rest is a number
+            if part.lower().startswith('v') and part[1:].isdigit():
+                return part.lower()
+                
+    except Exception:
+        pass
+        
     return "v00"
 
 def get_frame_range():
@@ -184,6 +229,7 @@ def get_all_data():
         "shot": get_shot_name(),
         "version": get_version(),
         "project": get_project_name(),
+        "dept": get_department(),
         "first_frame": first_frame,
         "last_frame": last_frame,
         "width": width,

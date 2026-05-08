@@ -168,6 +168,13 @@ class SubmitToDailiesWidget(QWidget):
         self.lbl_fps.setText(str(self.data.get("fps", 24.0)))
         self.lbl_project.setText(self.data.get("project", "Untitled"))
         
+        # Auto-select the department in the dropdown
+        detected_dept = self.data.get("dept", "")
+        if detected_dept:
+            index = self.cmb_dept.findText(detected_dept, Qt.MatchContains | Qt.MatchCaseSensitive)
+            if index >= 0:
+                self.cmb_dept.setCurrentIndex(index)
+        
         self._status("Data refreshed.", True)
 
     def remove_existing_slate(self):
