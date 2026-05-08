@@ -4,6 +4,12 @@ A professional, resolution-independent Nuke tool that automates the generation o
 
 ---
 
+## Architecture & Logic Flow
+
+![Code Logic Flow](docs/code_logic_flow.png)
+
+---
+
 ## Tech Stack
 
 * Python 3

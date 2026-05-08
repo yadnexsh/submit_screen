@@ -189,7 +189,8 @@ class SubmitToDailiesWidget(QWidget):
         self.refresh_data()
         try:
             if nuke.root().name() == "Root" or ".autosave" in nuke.root().name():
-                nuke.message("Please save your Nuke script before generating a slate.\nAutosaves and unsaved scripts are not supported.")
+                self.lbl_status.setStyleSheet("color: #DDAA00; font-style: italic;")
+                self.lbl_status.setText("⚠️ Please save your script before generating. Autosaves are ignored.")
                 return
 
             dept = self.cmb_dept.currentText()

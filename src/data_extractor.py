@@ -10,12 +10,7 @@ import re
 import getpass
 import datetime
 
-# Try to import nuke, but allow the module to be imported outside of Nuke for testing
-try:
-    import nuke
-    _HAS_NUKE = True
-except ImportError:
-    _HAS_NUKE = False
+import nuke
 
 def get_artist_name():
     """
@@ -40,30 +35,27 @@ def get_script_path():
         str: The absolute path of the Nuke script. Returns empty string if Nuke
              is not active or the script hasn't been saved to disk.
     """
-    if _HAS_NUKE:
-        try:
-            return nuke.root().name()
-        except Exception:
-            return ""
-    return ""
+    try:
+        return nuke.root().name()
+    except Exception:
+        return ""
 
 def get_project_name():
     """Attempt to determine the project/show name."""
-    if _HAS_NUKE:
-        try:
-            # Check project knob
-            proj_knob = nuke.root().knob('project')
-            if proj_knob and proj_knob.value():
-                return proj_knob.value()
-            
-            # Fallback to parent directory of the script
-            script_path = get_script_path()
-            if script_path:
-                parent_dir = os.path.basename(os.path.dirname(script_path))
-                if parent_dir:
-                    return parent_dir
-        except Exception:
-            pass
+    try:
+        # Check project knob
+        proj_knob = nuke.root().knob('project')
+        if proj_knob and proj_knob.value():
+            return proj_knob.value()
+        
+        # Fallback to parent directory of the script
+        script_path = get_script_path()
+        if script_path:
+            parent_dir = os.path.basename(os.path.dirname(script_path))
+            if parent_dir:
+                return parent_dir
+    except Exception:
+        pass
     return "Untitled Project"
 
 def get_shot_name():
@@ -135,21 +127,20 @@ def get_frame_range():
     Returns:
         tuple: (first_frame, last_frame). Defaults to (1, 100) if undefined.
     """
-    if _HAS_NUKE:
-        try:
-            # If a node is selected, try to get its frame range first
-            nodes = nuke.selectedNodes()
-            if nodes:
-                node = nodes[0]
-                if node.knob('first') and node.knob('last'):
-                    return int(node.knob('first').value()), int(node.knob('last').value())
-            
-            # Fallback to root
-            first = int(nuke.root().firstFrame())
-            last = int(nuke.root().lastFrame())
-            return first, last
-        except Exception:
-            pass
+    try:
+        # If a node is selected, try to get its frame range first
+        nodes = nuke.selectedNodes()
+        if nodes:
+            node = nodes[0]
+            if node.knob('first') and node.knob('last'):
+                return int(node.knob('first').value()), int(node.knob('last').value())
+        
+        # Fallback to root
+        first = int(nuke.root().firstFrame())
+        last = int(nuke.root().lastFrame())
+        return first, last
+    except Exception:
+        pass
     return 1, 100
 
 def get_fps():
@@ -159,21 +150,19 @@ def get_fps():
     Returns:
         float: The active FPS. Defaults to 24.0.
     """
-    if _HAS_NUKE:
-        try:
-            return float(nuke.root().fps())
-        except Exception:
-            pass
+    try:
+        return float(nuke.root().fps())
+    except Exception:
+        pass
     return 24.0
 
 def get_resolution():
     """Return the root format as (width, height) for format safety."""
-    if _HAS_NUKE:
-        try:
-            fmt = nuke.root().format()
-            return (fmt.width(), fmt.height())
-        except Exception:
-            pass
+    try:
+        fmt = nuke.root().format()
+        return (fmt.width(), fmt.height())
+    except Exception:
+        pass
     return (1920, 1080)
 
 def get_current_date():
