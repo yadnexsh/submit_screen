@@ -2,26 +2,26 @@
 version 15.0 v4
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="1024" y="4" w="874" h="1138" screen="0">
+    <window x="0" y="0" w="1917" h="1138" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="826" stretch="1"/>
+            <split size="1254" stretch="1"/>
             <splitter orientation="2">
-                <split size="644"/>
+                <split size="643"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="452"/>
+                <split size="453"/>
                 <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
-            <split size="0"/>
+            <split size="615"/>
             <dock id="" activePageId="Properties.1">
                 <page id="Properties.1"/>
                 <page id="uk.co.thefoundry.backgroundrenderview.1"/>
@@ -33,11 +33,9 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name H:/Gamut/Projects/AntiGravity/submit_screen/demo/JINX/054_acm_0030/054_acm_0030_roto_myfile_v05.nk
- frame 1001
- first_frame 1001
- last_frame 2001
- format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ name H:/Gamut/Projects/AntiGravity/Submit-Slate/demo/JINX/054_acm_0030/054_acm_0030_roto_myfile_v05.nk
+ frame 5
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
  proxy_type scale
  proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
  colorManagement Nuke
@@ -49,44 +47,407 @@ Root {
  logLut Cineon
  floatLut linear
 }
-BackdropNode {
+Group {
  inputs 0
- name BackdropNode1
- label "File name :\n054_acm_0030_roto_myfile_v05.nk"
- note_font "Verdana Bold"
- note_font_size 31
- note_font_color 0xffffffff
- xpos -5
- ypos -147
- bdwidth 40
- bdheight 20
+ name Group1
+ xpos -163
+ ypos -239
+ addUserKnob {20 dailies_tab l "Submit Info"}
+ addUserKnob {26 artist l Artist T Yadnyesh}
+ addUserKnob {26 shot l Shot T 054_acm_0030}
+ addUserKnob {26 version l Version T v05}
+ addUserKnob {26 frames l "Frame Range" T "1 - 100"}
+ addUserKnob {26 fps l FPS T 24.0}
+ addUserKnob {26 date l Date T 2026-05-09}
+ addUserKnob {26 dept l Dept T Roto}
+ addUserKnob {26 notes l Notes}
+}
+ Input {
+  inputs 0
+  name Input1
+ }
+ Read {
+  inputs 0
+  name Read1
+ }
+ Reformat {
+  name Reformat1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Reformat {
+  name Reformat1
+ }
+ Switch {
+  inputs 2
+  which {0}
+  name Switch1
+ }
+ Output {
+  name Output1
+ }
+end_group
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard1
+ xpos 291
+ ypos -306
 }
 ColorWheel {
  inputs 0
  gamma 0.45
  name ColorWheel1
- selected true
- xpos 115
- ypos -6
-}
-CheckerBoard2 {
- inputs 0
- name CheckerBoard1
- xpos 387
- ypos -6
+ xpos 143
+ ypos -300
 }
 Merge2 {
  inputs 2
- name Merge1
- xpos 238
- ypos 18
+ name Merge2
+ xpos 203
+ ypos -163
 }
+Group {
+ name submit_to_dailies
+ tile_color 0x4a7d4aff
+ selected true
+ xpos 203
+ ypos -113
+ addUserKnob {20 dailies_tab l "Submit Info"}
+ addUserKnob {26 artist l Artist T Yadnyesh}
+ addUserKnob {26 shot l Shot T 054_acm_0030}
+ addUserKnob {26 version l Version T v05}
+ addUserKnob {26 frames l "Frame Range" T "1 - 100"}
+ addUserKnob {26 fps l FPS T 24.0}
+ addUserKnob {26 date l Date T 2026-05-09}
+ addUserKnob {26 dept l Dept T Roto}
+ addUserKnob {26 notes l Notes T Roto_Note}
+}
+ Input {
+  inputs 0
+  name Input1
+ }
+ Read {
+  inputs 0
+  file_type png
+  file H:/Gamut/Projects/AntiGravity/Submit-Slate/src/media/Background.png
+  name Slate_Background
+ }
+ Reformat {
+  type "to box"
+  box_width 3840
+  box_height 2160
+  box_fixed true
+  resize fit
+  name Reformat_Canvas
+ }
+ Text2 {
+  font_size_toolbar 32
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Shot:  054_acm_0030"
+  old_message {{83 104 111 116 58 32 32 48 53 52 95 97 99 109 95 48 48 51 48}
+    }
+  box {85 1884 1800 2004}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Regular : Helvetica.ttf : 0 }}
+  font_size 32
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_Shot
+ }
+ Text2 {
+  font_size_toolbar 32
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Version:  v05"
+  old_message {{86 101 114 115 105 111 110 58 32 32 118 48 53}
+    }
+  box {85 1764 1800 1884}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Regular : Helvetica.ttf : 0 }}
+  font_size 32
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_Version
+ }
+ Text2 {
+  font_size_toolbar 32
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Artist:  Yadnyesh"
+  old_message {{65 114 116 105 115 116 58 32 32 89 97 100 110 121 101 115 104}
+    }
+  box {85 1644 1800 1764}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Regular : Helvetica.ttf : 0 }}
+  font_size 32
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_Artist
+ }
+ Text2 {
+  font_size_toolbar 32
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Frame Range:  1 - 100"
+  old_message {{70 114 97 109 101 32 82 97 110 103 101 58 32 32 49 32 45 32 49 48 48}
+    }
+  box {85 1524 1800 1644}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Regular : Helvetica.ttf : 0 }}
+  font_size 32
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_FrameRange
+ }
+ Text2 {
+  font_size_toolbar 32
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Date:  2026-05-09"
+  old_message {{68 97 116 101 58 32 32 50 48 50 54 45 48 53 45 48 57}
+    }
+  box {85 1404 1800 1524}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Regular : Helvetica.ttf : 0 }}
+  font_size 32
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_Date
+ }
+ Text2 {
+  font_size_toolbar 32
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "FPS:  24.0"
+  old_message {{70 80 83 58 32 32 50 52 46 48}
+    }
+  box {85 1284 1800 1404}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Regular : Helvetica.ttf : 0 }}
+  font_size 32
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_FPS
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message Roto
+  old_message {{82 111 116 111}
+    }
+  box {703.4 1696.3 3554.4 1997.3}
+  xjustify right
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Bold : Helvetica-Bold.ttf : 0 }}
+  global_font_scale 3
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_Dept
+ }
+ Text2 {
+  font_size_toolbar 28
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Submission Notes:"
+  old_message {{83 117 98 109 105 115 115 105 111 110 32 78 111 116 101 115 58}
+    }
+  box {85 374 1844 1004}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Bold : Helvetica-Bold.ttf : 0 }}
+  font_size 28
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.9019607843 0.6588235294 0 1}
+  name Text_NotesLabel
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message Roto_Note
+  old_message {{82 111 116 111 95 78 111 116 101}
+    }
+  box {85 522 3744 874}
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Regular : Helvetica.ttf : 0 }}
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_Notes
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message 054_acm_0030
+  old_message {{48 53 52 95 97 99 109 95 48 48 51 48}
+    }
+  box {85 81.5 2562 282.5}
+  yjustify bottom
+  transforms {{0 2}
+    }
+  font {{ Helvetica : Bold : Helvetica-Bold.ttf : 0 }}
+  global_font_scale 3
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  color {0.8 0.8 0.8 1}
+  name Text_ShowName
+ }
+ Reformat {
+  resize fit
+  black_outside true
+  name Reformat_To_Root
+ }
+ Switch {
+  inputs 2
+  which {{"frame < (1 + 5) ? 0 : 1"}}
+  name Slate_Switch
+ }
+ Output {
+  name Output1
+ }
+end_group
 Viewer {
- frame 1001
- frame_range 1001-2001
+ frame 5
+ frame_range 1-100
  monitorOutNDISenderName "NukeX - 054_acm_0030_roto_myfile_v05 - Viewer1"
  monitorOutOutputTransform rec709
  name Viewer1
- xpos -9
- ypos 100
+ xpos 575
+ ypos 118
 }

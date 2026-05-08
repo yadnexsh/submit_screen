@@ -33,10 +33,8 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name H:/Gamut/Projects/AntiGravity/submit_screen/demo/JINX/054_acm_0030/054_acm_0030_roto_myfile_v05.nk
- first_frame 1001
- last_frame 2001
- format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ name H:/Gamut/Projects/AntiGravity/Submit-Slate/demo/JINX/054_acm_0030/054_acm_0030_roto_myfile_v05.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
  proxy_type scale
  proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
  colorManagement Nuke
@@ -48,31 +46,169 @@ Root {
  logLut Cineon
  floatLut linear
 }
+Viewer {
+ inputs 0
+ frame_range 1-100
+ monitorOutNDISenderName "NukeX - 054_acm_0030_roto_myfile_v05 - Viewer1"
+ monitorOutOutputTransform rec709
+ name Viewer1
+ xpos 575
+ ypos 118
+}
+Group {
+ inputs 0
+ name Group1
+ xpos -163
+ ypos -239
+ addUserKnob {20 dailies_tab l "Submit Info"}
+ addUserKnob {26 artist l Artist T Yadnyesh}
+ addUserKnob {26 shot l Shot T 054_acm_0030}
+ addUserKnob {26 version l Version T v05}
+ addUserKnob {26 frames l "Frame Range" T "1 - 100"}
+ addUserKnob {26 fps l FPS T 24.0}
+ addUserKnob {26 date l Date T 2026-05-09}
+ addUserKnob {26 dept l Dept T Roto}
+ addUserKnob {26 notes l Notes}
+}
+ Input {
+  inputs 0
+  name Input1
+ }
+ Read {
+  inputs 0
+  name Read1
+ }
+ Reformat {
+  name Reformat1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  transforms {{0 2}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1024 778 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+ }
+ Reformat {
+  name Reformat1
+ }
+ Switch {
+  inputs 2
+  which {0}
+  name Switch1
+ }
+ Output {
+  name Output1
+ }
+end_group
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard1
+ selected true
+ xpos 291
+ ypos -306
+}
 ColorWheel {
  inputs 0
  gamma 0.45
  name ColorWheel1
- xpos 238
- ypos -103
-}
-CheckerBoard2 {
- inputs 0
- name CheckerBoard1
- xpos 387
- ypos -6
+ xpos 143
+ ypos -300
 }
 Merge2 {
  inputs 2
- name Merge1
- xpos 238
- ypos 18
-}
-Viewer {
- frame 1
- frame_range 1001-2001
- monitorOutNDISenderName "NukeX - untitled - Viewer1"
- monitorOutOutputTransform rec709
- name Viewer1
- xpos -40
- ypos -9
+ name Merge2
+ xpos 204
+ ypos -163
 }

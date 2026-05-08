@@ -1,6 +1,9 @@
-# Submit Slate Generator
-
-A professional, resolution-independent Nuke tool that automates the generation of standardized slate cards for production review. It eliminates manual typographic setup by automatically extracting required data.
+<div align="center">
+    <img src="https://capsule-render.vercel.app/api?type=blur&height=300&color=gradient&text=Submit%20Slate%20Generator&fontColor=FFFF" alt="Submit Slate Generator Header" />
+    <br/>
+    <br/>
+    <p><i>A professional, resolution-independent Nuke tool that automates the generation of standardized slate cards for production review. It eliminates manual typographic setup by automatically extracting required data.</i></p>
+</div>
 
 ---
 
@@ -54,6 +57,22 @@ This tool is designed to work out-of-the-box with standard VFX pipeline director
 3. Select your **Dept** (Comp, Roto, Prep, etc.) and add any **Submission Notes**.
 4. Click **Generate Slate**.
 5. A `submit_to_dailies` Group node will be injected into your node graph. Connect this beneath your final Merge node before rendering.
+
+---
+
+## UI & Features Showcase
+
+### 1. Basic Generation Flow & Slate Result
+Demonstrates the UI metadata population and the actual slate card holding for 5 frames before seamlessly cutting to the clean plate.
+![Full Detailed Process](media/Full_Detailed.gif)
+
+### 2. Auto-Select Department
+The tool intelligently reads the Nuke script's filename and automatically pre-selects the correct department in the dropdown before the UI even appears.
+![Auto Select Department](media/Based_on_deptname.png)
+
+### 3. Safety Checks (Unsaved Scripts)
+Prevents artists from generating slates on unsaved or autosave scripts, avoiding pipeline naming errors.
+![File Not Saved Warning](media/File_Not_Saved.gif)
 
 ---
 
