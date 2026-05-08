@@ -66,17 +66,16 @@ def get_project_name():
             pass
     return "Untitled Project"
 
-def get_shot_and_version():
+def get_shot_name():
     """
-    Parses the Nuke script's filepath to extract the shot name, version, and project.
+    Parses the Nuke script's filepath to extract the shot name.
     
     Uses standard string splitting rules designed for the internal pipeline naming
     convention (e.g., 'ProjectName_Shot123_v001_comp.nk'). Avoids complex regex 
     for better maintainability by artists.
     
     Returns:
-        tuple: (shot_name, version_string, project_name)
-               Defaults to ("UNKNOWN", "v00", "Untitled Project") if parsing fails.
+        str: The extracted shot name. Defaults to "UNKNOWN" if parsing fails.
     """
     script_path = get_script_path()
     if not script_path:

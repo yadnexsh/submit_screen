@@ -4,6 +4,15 @@ A professional, resolution-independent Nuke tool that automates the generation o
 
 ---
 
+## Tech Stack
+
+* Python 3
+* Foundry Nuke API (`nuke` module)
+* PySide2 / PySide6 (Qt UI Framework)
+* Nuke TCL Expressions
+
+---
+
 ## Features
 
 * **Zero-Touch Metadata Extraction**

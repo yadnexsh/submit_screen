@@ -187,26 +187,23 @@ class SubmitToDailiesWidget(QWidget):
         """Build the Nuke node graph based on current UI data."""
         # Refresh data just in case
         self.refresh_data()
-        
-        dept = self.cmb_dept.currentText()
-        notes = self.txt_notes.toPlainText()
-        
         try:
-            # We don't necessarily want to remove existing ones, but often it's desired
-            # Let's keep it so artists can have multiple slates if they want, or they can use the remove button
+            if nuke.root().name() == "Root" or ".autosave" in nuke.root().name():
+                nuke.message("Please save your Nuke script before generating a slate.\nAutosaves and unsaved scripts are not supported.")
+                return
+
+            dept = self.cmb_dept.currentText()
+            notes = self.txt_notes.toPlainText()
             
             group = node_builder.build_slate(
                 data=self.data, 
                 dept=dept, 
                 notes=notes
             )
-            
             self._status("✅ Slate created: {}".format(group.name()), True)
-            
         except Exception as e:
             self._status("❌ Error: {}".format(e), False)
-            import traceback
-            traceback.print_exc()
+            import traceback; traceback.print_exc()
 
 import sys
 

@@ -37,8 +37,11 @@ def _create_text_node(name, message, font_size, font_family, font_style, color, 
     try:
         node["font"].setValue(font_family, font_style)
     except Exception:
-        # Fallback to nuke defaults if the font isn't registered
-        pass
+        try:
+            # Fallback to Times New Roman if the requested font is missing
+            node["font"].setValue("Times New Roman", "Regular")
+        except Exception:
+            pass # Fallback to Nuke's default (Utopia)
     
     # Text2 colors are [R, G, B, A] lists, but we have a Hex int
     r = ((color >> 24) & 0xFF) / 255.0
@@ -76,8 +79,11 @@ def build_slate(data, dept, notes):
     # 1. Capture selection
     selected_node = None
     try:
-        selected_node = nuke.selectedNode()
-    except ValueError:
+        nodes = nuke.selectedNodes()
+        if nodes:
+            # Connect to the last selected node (or the only selected node)
+            selected_node = nodes[-1]
+    except Exception:
         pass
 
     # 2. Extract values for readability
@@ -232,12 +238,22 @@ def build_slate(data, dept, notes):
         last_node = text_show
 
         # ----------------------------------------------------
+        # FINAL REFORMAT (Slate Format Safety)
+        # ----------------------------------------------------
+        # Reformat the generated 4K slate to match the root format BEFORE the switch.
+        # This protects the clean plate from being reformatted or altered by the dailies node.
+        final_reformat = nuke.nodes.Reformat(name="Reformat_To_Root")
+        final_reformat.setInput(0, last_node)
+        final_reformat["resize"].setValue("fit")
+        final_reformat["black_outside"].setValue(True)
+
+        # ----------------------------------------------------
         # SWITCH LOGIC (Slate -> Plate)
         # ----------------------------------------------------
         switch = nuke.nodes.Switch(name="Slate_Switch")
-        # Input 0: Slate
-        # Input 1: Clean Plate
-        switch.setInput(0, last_node)
+        # Input 0: Slate (Reformatted to root)
+        # Input 1: Clean Plate (Untouched)
+        switch.setInput(0, final_reformat)
         switch.setInput(1, input_node)
         
         # Switch expression logic:
@@ -245,20 +261,9 @@ def build_slate(data, dept, notes):
         expr = "frame < ({} + {}) ? 0 : 1".format(first_frame, constants.SLATE_DURATION_FRAMES)
         switch["which"].setExpression(expr)
 
-        # ----------------------------------------------------
-        # FINAL REFORMAT (Format Safety)
-        # ----------------------------------------------------
-        # This SINGLE default Reformat node guarantees that whatever comes 
-        # out of the Switch (Slate or Plate) perfectly matches the 
-        # Nuke script's native root format. No custom formats created!
-        final_reformat = nuke.nodes.Reformat(name="Reformat_To_Root")
-        final_reformat.setInput(0, switch)
-        final_reformat["resize"].setValue("fit")
-        final_reformat["black_outside"].setValue(True)
-
         # Output node
         output_node = nuke.nodes.Output(name="Output1")
-        output_node.setInput(0, final_reformat)
+        output_node.setInput(0, switch)
 
     finally:
         # 5. Finish Group
