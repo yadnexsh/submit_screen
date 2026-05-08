@@ -1,6 +1,6 @@
 # Dynamic Dailies Slate Generator
 
-A professional, resolution-independent Nuke tool that automates the generation of standardized slate cards for production review. It eliminates manual typographic setup by automatically extracting sequence metadata, building a perfectly aligned text graph natively on a 3840x2160 canvas, and seamlessly splicing it with the clean plate.
+A professional, resolution-independent Nuke tool that automates the generation of standardized slate cards for production review. It eliminates manual typographic setup by automatically extracting required data.
 
 ---
 
