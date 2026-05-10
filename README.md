@@ -62,7 +62,11 @@ This tool is designed to work out-of-the-box with standard VFX pipeline director
 
 ## UI & Features Showcase
 
-### 1. Basic Generation Flow & Slate Result
+### 1. Final Slate Output
+The tool guarantees a clean, standardized, resolution-independent typographic slate card for production review.
+![Generated Slate Output](media/Slate.png)
+
+### 2. Basic Generation Flow & Slate Result
 Demonstrates the UI metadata population and the actual slate card holding for 5 frames before seamlessly cutting to the clean plate.
 ![Full Detailed Process](media/Full_Detailed.gif)
 
