@@ -70,11 +70,11 @@ The tool guarantees a clean, standardized, resolution-independent typographic sl
 Demonstrates the UI metadata population and the actual slate card holding for 5 frames before seamlessly cutting to the clean plate.
 ![Full Detailed Process](media/Full_Detailed.gif)
 
-### 2. Auto-Select Department
+### 3. Auto-Select Department
 The tool intelligently reads the Nuke script's filename and automatically pre-selects the correct department in the dropdown before the UI even appears.
 ![Auto Select Department](media/Based_on_deptname.png)
 
-### 3. Safety Checks (Unsaved Scripts)
+### 4. Safety Checks (Unsaved Scripts)
 Prevents artists from generating slates on unsaved or autosave scripts, avoiding pipeline naming errors.
 ![File Not Saved Warning](media/File_Not_Saved.gif)
 
