@@ -8,20 +8,20 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="971" stretch="1"/>
+            <split size="1254" stretch="1"/>
             <splitter orientation="2">
-                <split size="643"/>
+                <split size="696"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="453"/>
+                <split size="400"/>
                 <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
-            <split size="898"/>
+            <split size="615"/>
             <dock id="" activePageId="Properties.1">
                 <page id="Properties.1"/>
                 <page id="uk.co.thefoundry.backgroundrenderview.1"/>
@@ -33,7 +33,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name H:/Gamut/Projects/AntiGravity/submit_screen/demo/MERCY/021_set_0320/021_set_0320_comp_new_v01.nk
+ name H:/Gamut/Projects/AntiGravity/Submit-Slate/demo/MERCY/021_tds_0120/021_tds_0120_comp_v03.nk
  frame 100
  first_frame 100
  last_frame 200
@@ -50,37 +50,24 @@ Root {
  logLut Cineon
  floatLut linear
 }
-BackdropNode {
- inputs 0
- name BackdropNode1
- label "File name :\n021_set_0320_comp_new_v01.nk"
- note_font "Verdana Bold"
- note_font_size 31
- note_font_color 0xffffffff
- selected true
- xpos -218
- ypos -149
- bdwidth 40
- bdheight 20
-}
 ColorWheel {
  inputs 0
  gamma 0.45
  name ColorWheel1
- xpos 260
- ypos -5
+ xpos 238
+ ypos -103
 }
 ColorBars {
  inputs 0
  name ColorBars1
- xpos -5
- ypos -5
+ xpos 102
+ ypos -6
 }
 Merge2 {
  inputs 2
  name Merge1
- xpos 131
- ypos 19
+ xpos 238
+ ypos 18
 }
 Viewer {
  frame 100
@@ -89,6 +76,6 @@ Viewer {
  monitorOutNDISenderName "NukeX - 021_set_0320_comp_new_v01 - Viewer1"
  monitorOutOutputTransform rec709
  name Viewer1
- xpos 503
- ypos 12
+ xpos -40
+ ypos -9
 }

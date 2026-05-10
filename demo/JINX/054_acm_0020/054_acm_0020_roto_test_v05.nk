@@ -33,7 +33,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name H:/Gamut/Projects/AntiGravity/Submit-Slate/demo/MERCY/021_set_0320/021_set_0320_comp_new_v01.nk
+ name H:/Gamut/Projects/AntiGravity/Submit-Slate/demo/JINX/054_acm_0020/054_acm_0020_roto_test_v05.nk
  frame 100
  first_frame 100
  last_frame 200
